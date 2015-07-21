@@ -48,6 +48,10 @@ namespace ChallengeStudentCourses
             foreach(var course in courses)
             {
                 resultLabel.Text += String.Format("Course: {0} - {1}</br>", course.CourseId, course.Name);
+                foreach(var student in course.Students)
+                {
+                    resultLabel.Text += String.Format("  Student: {0} - {1}</br>", student.StudentId, student.Name).Replace(" ", "&nbsp");
+                }
             }
         }
 
