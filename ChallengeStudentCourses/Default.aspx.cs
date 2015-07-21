@@ -64,9 +64,35 @@ namespace ChallengeStudentCourses
              * Object and Collection Initializers.  Then, iterate through
              * each student and print out to the web page each Student's
              * info and the Courses the Student is enrolled in.
-             */ 
+             */
 
-
+            Dictionary<int, Student> students = new Dictionary<int, Student>()
+            {
+                {1, new Student(){StudentId=1, Name="Bob Tabor", Courses = new List<Course>()
+                {
+                    new Course(){CourseId=1, Name="Algebra 3"},
+                    new Course(){CourseId=2, Name="Psychology"}
+                }}},
+                {2, new Student(){StudentId=2, Name="Steve Jaworski", Courses = new List<Course>()
+                {
+                    new Course(){CourseId=2, Name="Psychology"},
+                    new Course(){CourseId=3, Name="Business Law"}
+                }}},
+                {3, new Student(){StudentId=3, Name="Chuck Ravetto", Courses = new List<Course>()
+                {
+                    new Course(){CourseId=3, Name="Business Law"},
+                    new Course(){CourseId=1, Name="Algebra 3"}
+                }}}
+            };
+            resultLabel.Text = "";
+            foreach (var student in students)
+            {
+                resultLabel.Text += String.Format("Student: {0} - {1}</br>", student.Value.StudentId, student.Value.Name);
+                foreach (var course in student.Value.Courses)
+                {
+                    resultLabel.Text += String.Format("  Course: {0} - {1}</br>", course.CourseId, course.Name).Replace(" ", "&nbsp");
+                }
+            }
         }
 
         protected void assignment3Button_Click(object sender, EventArgs e)
