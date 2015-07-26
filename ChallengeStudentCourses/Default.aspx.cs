@@ -105,9 +105,25 @@ namespace ChallengeStudentCourses
              * new requirement.  Give each Student a grade in each Course they
              * are enrolled in (make up the data).  Then, for each student, 
              * print out each Course they are enrolled in and their grade.
-             */ 
+             */
 
-
+            Dictionary<int, Student> students = new Dictionary<int, Student>()
+            {
+                {10, new Student(){StudentId=10, Name="Pete Wentz", Courses=new List<Course>()
+                {
+                    new Course(){Name="Physiology 101", Grade=new Grade(){CourseGrade=92}},
+                    new Course(){Name="Project Management 432", Grade=new Grade(){CourseGrade=96}}
+                }}}
+            };
+            resultLabel.Text = "";
+            foreach(var student in students)
+            {
+                resultLabel.Text += String.Format("Student: {0} {1}</br>", student.Value.StudentId, student.Value.Name);
+                foreach(var course in student.Value.Courses)
+                {
+                    resultLabel.Text += String.Format("Enrolled In: {0} - Grade: {1}</br>", course.Name, course.Grade.CourseGrade);
+                }
+            }
         }
     }
 }
